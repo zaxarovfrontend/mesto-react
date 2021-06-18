@@ -1,6 +1,23 @@
 import React from 'react';
+import api from "../utils/api";
 
 function Main(props) {
+  const [userAvatar, setUserAvatar] = React.useState('');
+  const [userName, setuserName] = React.useState('');
+  const [userDescription, setUserDescription] = React.useState('');
+
+  React.useEffect(() => {
+    Promise.all([
+      api.editUserData(),
+      api.addCard()
+    ])
+        .then(([userData]) => {
+          setuserName(userData.name);
+          setUserDescription(userData.about);
+          setUserAvatar(userData.avatar);
+        })
+        .catch((err) => console.log(err))
+  }, []);
 
   return (
     <main className="content">
@@ -20,59 +37,7 @@ function Main(props) {
     </section>
     
     <section className="cards"></section>
-    <div className="popup popup_type_edit-profile">
-      <div className="popup__overlay"></div>
-      <form name="form-container" className="popup__container popup__container_type_edit-profile" novalidate>
-        <h2 className="popup__title">Редактировать профиль</h2>
-        <input type="text" name="name" id="name-input" minlength="2"  maxlength="40" className="popup__input popup__input_type-name" placeholder="Имя" required />
-        <span className="popup__error" id="name-input-error" ></span>
-        <input type="text" name="job" minlength="2"  maxlength="200" id="job-input" className="popup__input popup__input_type-job" placeholder="Вид деятельности" required />
-        <span className="popup__error" id="job-input-error" ></span>
-        <button type="submit" className="popup__submit-button hover">Cохранить</button>
-        <button type="button" className="popup__close-button popup__close-button_type_edit hover"></button>
-      </form>
-    </div>
-    
-    <div className="popup popup_type_add" >
-      <div className="popup__overlay"></div>
-      <form name="form-container" className="popup__container popup__container_add" novalidate>
-        <h2 className="popup__title popup__title_style">Новое место</h2>
-        <input type="text" name="title"  id="title-input" className="popup__input" minlength="2"  maxlength="30" placeholder="Название" required />
-        <span className="popup__error" id="title-input-error" ></span>
-        <input type="url" name="link"  id="link-input" className="popup__input" placeholder="Ссылка на картинку" required />
-        <span className="popup__error" id="link-input-error"></span>
-        <button type="submit" className="popup__submit-button popup__submit-button_style hover">Cоздать</button>
-        <button type="button" className="popup__close-button popup__close-button_type_add hover"></button>
-      </form>
-    </div>
-  
-    <div className="popup popup_type_image">
-      <div className="popup__overlay"></div>
-      <figure className="popup__figure">
-        <img src="#" className="popup__image" alt="фотография" />
-        <figcaption className="popup__caption"></figcaption>
-        <button type="button" className="popup__close-button popup__close-button_type_image hover"></button>
-      </figure></div>
 
-      <div className="popup popup_type_avatar-update">
-        <div className="popup__overlay"></div>
-        <form name="form-container" className="popup__container" novalidate>
-          <h2 className="popup__title popup__title_type-update">Обновить аватар</h2>
-          <input type="url" name="link" id="avatar-input" minlength="2" className="popup__input" placeholder="Ссылка на картинку" required />
-          <span className="popup__error" id="avatar-input-error" ></span>
-          <button type="submit" className="popup__submit-button hover">Cохранить</button>
-          <button type="button" className="popup__close-button popup__close-button_type_edit hover"></button>
-        </form>
-      </div>
-  
-      <div className="popup popup_type_add-question">
-        <div className="popup__overlay"></div>
-        <form name="form-container" className="popup__container" novalidate>
-          <h2 className="popup__title popup__title_type_question">Вы уверенны?</h2>
-          <button type="submit" className="popup__submit-button hover">Да</button>
-          <button type="button" className="popup__close-button popup__close-button_type_question hover"></button>
-        </form>
-      </div>
   </main>
   );
 }

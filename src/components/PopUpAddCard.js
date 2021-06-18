@@ -9,6 +9,7 @@ function PopUpAddCard(props) {
          onClose = {props.onClose}
          name = 'add'
          title = 'Новое место'
+         buttonText='Сохранить'
          >
          <input type="text" name="title" id="title-input" className="popup__input" minLength="2" maxLength="30"
                 placeholder="Название" required/>
