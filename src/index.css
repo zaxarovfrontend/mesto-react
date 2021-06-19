@@ -52,7 +52,7 @@
 @import url(../src/blocks/popup/__title/_type/popup__title_type-update.css);
 @import url(../src/blocks/popup/__close-button/_type/_question/popup__close-button_type_question.css);
 @import url(../src/blocks/popup/__title/_type/_question/popup__title_type_question.css);
-
+@import url(../src/blocks/popup/__form/popup__form.css);
 
 /* блок hover */
 @import url(../src/blocks/hover/hover.css);

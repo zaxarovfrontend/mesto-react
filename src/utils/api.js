@@ -1,4 +1,3 @@
-import PopUpEditProfile from "../components/PopUpEditProfile";
 
 class Api {
   constructor(options) {

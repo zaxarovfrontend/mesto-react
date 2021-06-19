@@ -3,7 +3,7 @@ import '../index.css';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
-import ImagePopup from './ImagePopup';
+// import ImagePopup from './ImagePopup';
 import PopUpEditProfile from "./PopUpEditProfile";
 import PopUpAddCard from "./PopUpAddCard";
 import ProfileAvatar from "./ProfileAvatar";
@@ -34,7 +34,7 @@ function App() {
 
   return (
   <div className='root'>
-  <body className="body">
+  <div className="body">
     <div className="page">
      <Header/>
      <Main
@@ -63,7 +63,7 @@ function App() {
     {/*    </div>*/}
     {/*  </article>*/}
     {/*</template>*/}
-  </body>
+  </div>
   </div>
   );
 }
