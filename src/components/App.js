@@ -33,8 +33,7 @@ function App() {
   }
 
   return (
-  <div className='root'>
-  <div className="body">
+
     <div className="page">
      <Header/>
      <Main
@@ -46,7 +45,6 @@ function App() {
       <PopUpEditProfile isOpen={isPopUpEditProfileOpen} onClose={closeAllPopups}/>
       <PopUpAddCard isOpen={isPopUpAddCard} onClose={closeAllPopups}/>
       <ProfileAvatar isOpen={isProfileAvatarPopupOpen} onClose={closeAllPopups}/>
-    </div>
 
     {/*<template className="card-template">*/}
     {/*  <article className="card">*/}
@@ -63,9 +61,8 @@ function App() {
     {/*    </div>*/}
     {/*  </article>*/}
     {/*</template>*/}
-  </div>
-  </div>
-  );
+    </div>
+  )
 }
 
 export default App;

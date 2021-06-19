@@ -1,6 +1,7 @@
+import pencilImage from '../images/Karandashimage.svg'
 import React from 'react';
 import api from "../utils/api";
-import pencilImage from '../images/Karandashimage.svg'
+
 
 function Main(props) {
   const [userAvatar, setUserAvatar] = React.useState('');
@@ -9,9 +10,9 @@ function Main(props) {
 
   React.useEffect(() => {
     Promise.all([
-      api.editUserData(),
-      api.addCard(),
-      api.updateAvatar()
+      api.getUserInfo(),
+      api.getInitialCards(),
+
     ])
         .then(([userData]) => {
           setUserName(userData.name);
@@ -25,7 +26,7 @@ function Main(props) {
     <main className="content">
     <section className="profile">
       <div className="profile__info-block">
-      <button  onClick={props.onEditAvatar} src={pencilImage} className="profile__edit-button-avatar"></button >
+      <img  onClick={props.onEditAvatar} src={pencilImage} className="profile__edit-button-avatar"/>
       <img className="profile__avatar" src={userAvatar} alt="фото Кусто" />
         </div>
       <div className="profile__info">
