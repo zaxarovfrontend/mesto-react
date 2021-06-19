@@ -12,51 +12,51 @@ import ProfileAvatar from "./ProfileAvatar";
 function App() {
 
     const [selectedCard, setSelectedCard] = React.useState(null);
-  const [isPopUpEditProfileOpen, setIsPopUpEditProfileOpen] = React.useState(false);
-  const [isProfileAvatarPopupOpen,  setIsProfileAvatarPopupOpen] = React.useState(false);
-  const [isPopUpAddCard, setIsPopUpAddCardPopupOpen] = React.useState(false);
+    const [isPopUpEditProfileOpen, setIsPopUpEditProfileOpen] = React.useState(false);
+    const [isProfileAvatarPopupOpen, setIsProfileAvatarPopupOpen] = React.useState(false);
+    const [isPopUpAddCard, setIsPopUpAddCardPopupOpen] = React.useState(false);
 
-  function handleCardClick(card) {
-      setSelectedCard(card)
-  }
+    function handleCardClick(card) {
+        setSelectedCard(card)
+    }
 
-  function handleEditProfileClick() {
-    setIsPopUpEditProfileOpen(true);
-  }
+    function handleEditProfileClick() {
+        setIsPopUpEditProfileOpen(true);
+    }
 
-  function handleEditAvatarClick() {
-    setIsProfileAvatarPopupOpen(true);
-  }
+    function handleEditAvatarClick() {
+        setIsProfileAvatarPopupOpen(true);
+    }
 
-  function handleAddPlaceClick() {
-    setIsPopUpAddCardPopupOpen(true);
-  }
+    function handleAddPlaceClick() {
+        setIsPopUpAddCardPopupOpen(true);
+    }
 
-  function closeAllPopups() {
-      setSelectedCard(null)
-    setIsPopUpEditProfileOpen(false)
-    setIsPopUpAddCardPopupOpen(false)
-    setIsProfileAvatarPopupOpen(false)
-  }
+    function closeAllPopups() {
+        setSelectedCard(null)
+        setIsPopUpEditProfileOpen(false)
+        setIsPopUpAddCardPopupOpen(false)
+        setIsProfileAvatarPopupOpen(false)
+    }
 
-  return (
+    return (
 
-    <div className="page">
-     <Header/>
-     <Main
-         onEditProfile={handleEditProfileClick}
-         onAddPlace={handleAddPlaceClick}
-         onEditAvatar={handleEditAvatarClick}
-         onCardClick = {handleCardClick}
-     />
-     <Footer/>
-        <ImagePopup card={selectedCard !== null && selectedCard} onClose={closeAllPopups} />
-      <PopUpEditProfile isOpen={isPopUpEditProfileOpen} onClose={closeAllPopups}/>
-      <PopUpAddCard isOpen={isPopUpAddCard} onClose={closeAllPopups}/>
-      <ProfileAvatar isOpen={isProfileAvatarPopupOpen} onClose={closeAllPopups}/>
+        <div className="page">
+            <Header/>
+            <Main
+                onEditProfile={handleEditProfileClick}
+                onAddPlace={handleAddPlaceClick}
+                onEditAvatar={handleEditAvatarClick}
+                onCardClick={handleCardClick}
+            />
+            <Footer/>
+            <ImagePopup card={selectedCard !== null && selectedCard} onClose={closeAllPopups}/>
+            <PopUpEditProfile isOpen={isPopUpEditProfileOpen} onClose={closeAllPopups}/>
+            <PopUpAddCard isOpen={isPopUpAddCard} onClose={closeAllPopups}/>
+            <ProfileAvatar isOpen={isProfileAvatarPopupOpen} onClose={closeAllPopups}/>
 
-    </div>
-  )
+        </div>
+    )
 }
 
 export default App;

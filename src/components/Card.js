@@ -5,7 +5,7 @@ function Card(props) {
         props.onCardClick(props.card);
     }
 
-    return(
+    return (
         <article className="card">
             <div className="card__group">
                 <img src={props.card.link} alt={props.card.name} onClick={handleClick} className="card__image"/>
@@ -19,7 +19,7 @@ function Card(props) {
                 </div>
             </div>
         </article>
-  )
+    )
 }
 
 export default Card
