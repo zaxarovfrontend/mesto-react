@@ -7,7 +7,7 @@ function PopUpAddCard(props) {
      <PopupWithForm
          isOpen = {props.isOpen}
          onClose = {props.onClose}
-         name = 'add'
+         name = 'name'
          title = 'Новое место'
          buttonText='Сохранить'
          >

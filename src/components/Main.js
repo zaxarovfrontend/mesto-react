@@ -1,23 +1,24 @@
-import pencilImage from '../images/Karandashimage.svg'
 import React from 'react';
 import api from "../utils/api";
-
+import Card from "./Card";
+import pencilImage from '../images/Karandashimage.svg'
 
 function Main(props) {
   const [userAvatar, setUserAvatar] = React.useState('');
   const [userName, setUserName] = React.useState('');
   const [userDescription, setUserDescription] = React.useState('');
+  const [cards, setCards] = React.useState([]);
 
   React.useEffect(() => {
     Promise.all([
       api.getUserInfo(),
       api.getInitialCards(),
-
     ])
-        .then(([userData]) => {
+        .then(([userData, cards]) => {
           setUserName(userData.name);
           setUserDescription(userData.about);
           setUserAvatar(userData.avatar);
+          setCards(cards);
         })
         .catch((err) => console.log(err))
   }, []);
@@ -38,8 +39,17 @@ function Main(props) {
       </div>
       <button onClick={props.onAddPlace}  type="button" className="profile__add-button hover"></button>
     </section>
-    
-    <section className="cards"></section>
+
+    <section className="cards">
+          {cards.map((card => (
+              <Card
+                  onCardClick={props.onCardClick}
+                  key={card._id}
+                  card={card}
+              />
+          )))
+          }
+    </section>
 
   </main>
   );
