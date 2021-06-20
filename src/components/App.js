@@ -14,7 +14,7 @@ function App() {
     const [selectedCard, setSelectedCard] = React.useState(null);
     const [isPopUpEditProfileOpen, setIsPopUpEditProfileOpen] = React.useState(false);
     const [isProfileAvatarPopupOpen, setIsProfileAvatarPopupOpen] = React.useState(false);
-    const [isPopUpAddCard, setIsPopUpAddCardPopupOpen] = React.useState(false);
+    const [isPopUpAddCardOpen, setIsPopUpAddCardPopupOpen] = React.useState(false);
 
     function handleCardClick(card) {
         setSelectedCard(card)
@@ -52,7 +52,7 @@ function App() {
             <Footer/>
             <ImagePopup card={selectedCard !== null && selectedCard} onClose={closeAllPopups}/>
             <PopUpEditProfile isOpen={isPopUpEditProfileOpen} onClose={closeAllPopups}/>
-            <PopUpAddCard isOpen={isPopUpAddCard} onClose={closeAllPopups}/>
+            <PopUpAddCard isOpen={isPopUpAddCardOpen} onClose={closeAllPopups}/>
             <ProfileAvatar isOpen={isProfileAvatarPopupOpen} onClose={closeAllPopups}/>
 
         </div>

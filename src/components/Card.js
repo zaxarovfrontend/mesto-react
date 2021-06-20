@@ -1,5 +1,7 @@
 import React from 'react';
 
+props.card.likes = undefined;
+
 function Card(props) {
     function handleClick() {
         props.onCardClick(props.card);
@@ -14,7 +16,7 @@ function Card(props) {
                     <h2 className="card__title">{props.card.name}</h2>
                     <div className="card__like_group">
                         <button type="button" className="card__like-button"></button>
-                        <span className="card__like-info"></span>
+                        <span className="card__like-info">{props.card.likes.length}</span>
                     </div>
                 </div>
             </div>
