@@ -1,7 +1,5 @@
 import React from 'react';
 
-props.card.likes = undefined;
-
 function Card(props) {
     function handleClick() {
         props.onCardClick(props.card);
