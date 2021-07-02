@@ -4,6 +4,16 @@ class Api {
         this._url = options.url;
     }
 
+
+    changeLikeCardStatus(id, isLiked) {
+        if (isLiked) {
+            return this.setLike(id);
+        }
+            else {
+             return this.removeLike(id);
+            }
+        }
+
 //Получил информациб о профиле с сервера
     getUserInfo() {
         return fetch(`${this._url}/users/me`, {
