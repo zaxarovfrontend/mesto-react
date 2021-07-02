@@ -33,13 +33,13 @@ class Api {
     }
 
 //Добавил новую информацию о профиле на сервер
-    editUserData(name, about) {
+    editUserData(data) {
         return fetch(`${this._url}/users/me`, {
             method: "PATCH",
             headers: this._headers,
             body: JSON.stringify({
-                name: name,
-                about: about
+                name: data.name,
+                about: data.about
             })
         })
             .then(this._checkRes)
@@ -84,12 +84,12 @@ class Api {
             .then(this._checkRes)
     }
 
-    updateAvatar(link) {
+    updateAvatar(data) {
         return fetch(`${this._url}/users/me/avatar`, {
             method: 'PATCH',
             headers: this._headers,
             body: JSON.stringify({
-                avatar: link,
+                avatar: data.avatar,
             })
         })
             .then(this._checkRes)

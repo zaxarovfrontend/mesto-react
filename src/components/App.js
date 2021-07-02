@@ -77,9 +77,38 @@ function App() {
         })
     }
 
+    //функция запроса удаления карточек
+    function handleCardDelete(card) {
+       api.cardDelete(card._id)
+           .then(() =>{
+               setCards((state)=> state.filter((c) => c !== card))
+           })
+           .catch((err) =>  {
+           console.log(err)
+        })
+    }
 
+    function handleUpdateUser(data) {
+       api.editUserData(data)
+           .then((data) =>{
+               setCurrentUser(data);
+               closeAllPopups();
+           })
+           .catch((err) => {
+           console.log(err)
+    })
+    }
 
-
+    function handleUpdateAvatar(data) {
+        api.updateAvatar(data)
+            .then((data) =>{
+                setCurrentUser(data);
+                closeAllPopups();
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
 
 
     return (
@@ -93,12 +122,13 @@ function App() {
                 onCardClick={handleCardClick}
                 cards={cards}
                 onCardLike = {handleCardLike}
+                onCardDelete = {handleCardDelete}
             />
             <Footer/>
             <ImagePopup card={selectedCard !== null && selectedCard} onClose={closeAllPopups}/>
-            <PopUpEditProfile isOpen={isPopUpEditProfileOpen} onClose={closeAllPopups}/>
+            <PopUpEditProfile isOpen={isPopUpEditProfileOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser}/>
             <PopUpAddCard isOpen={isPopUpAddCardOpen} onClose={closeAllPopups}/>
-            <ProfileAvatar isOpen={isProfileAvatarPopupOpen} onClose={closeAllPopups}/>
+            <ProfileAvatar isOpen={isProfileAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar}/>
         </div>
         </CurrentUserContext.Provider>
     )
