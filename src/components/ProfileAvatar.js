@@ -10,7 +10,10 @@ function ProfileAvatar(props) {
         props.onUpdateAvatar({
             avatar: avatarRef.current.value
         });
+        //сбросил инпуты
+        avatarRef.current.value = ('');
     }
+
 
     return (
         <PopupWithForm

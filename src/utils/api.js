@@ -8,11 +8,10 @@ class Api {
     changeLikeCardStatus(id, isLiked) {
         if (isLiked) {
             return this.setLike(id);
+        } else {
+            return this.removeLike(id);
         }
-            else {
-             return this.removeLike(id);
-            }
-        }
+    }
 
 //Получил информациб о профиле с сервера
     getUserInfo() {

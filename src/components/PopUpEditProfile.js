@@ -10,7 +10,7 @@ function PopUpEditProfile(props) {
     React.useEffect(() => {
         setName(currentUser.name);
         setDescription(currentUser.about);
-    }, [currentUser,props.isOpen]);
+    }, [currentUser, props.isOpen]);
 
     function handleSubmit(e) {
         // Запрещаем браузеру переходить по адресу формы
@@ -23,10 +23,12 @@ function PopUpEditProfile(props) {
         });
     }
 
+    //меняем имя профиля
     function changeName(e) {
         setName(e.target.value);
     }
 
+    //меняем вид деятельности
     function changeDescription(e) {
         setDescription(e.target.value);
     }
@@ -41,11 +43,13 @@ function PopUpEditProfile(props) {
             buttonText='Сохранить'
             onSubmit={handleSubmit}
         >
-            <input type="text" name="name" className='popup__input' id="name-input" minLength="2" maxLength="40"
-                   placeholder="Имя" required onChange = {changeName}/>
+            <input type="text" name="name" value={name} className='popup__input' id="name-input" minLength="2"
+                   maxLength="40"
+                   placeholder="Имя" required onChange={changeName}/>
             <span className="popup__error" id="name-input-error"></span>
-            <input type="text" name="job" minLength="2" maxLength="200" id="job-input"
-                   className="popup__input popup__input_type-job" placeholder="Вид деятельности" required onChange = {changeDescription}/>
+            <input type="text" name="job" value={description} minLength="2" maxLength="200" id="job-input"
+                   className="popup__input popup__input_type-job" placeholder="Вид деятельности" required
+                   onChange={changeDescription}/>
             <span className="popup__error" id="job-input-error"></span>
         </PopupWithForm>
     )

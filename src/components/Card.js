@@ -9,8 +9,8 @@ function Card(props) {
     );
     const isLiked = props.card.likes.some(i => i._id === currentUser._id);
     const cardLikeButtonClassName = (
-        `card__like-button ${isLiked ? 'card__icon-button_active' : ''}`
-    );;
+        `card__like-button ${isLiked ? 'card__like-button_active' : ''}`
+    );
 
 
     function handleClick() {
@@ -33,7 +33,7 @@ function Card(props) {
                 <div className="card__group-container">
                     <h2 className="card__title">{props.card.name}</h2>
                     <div className="card__like_group">
-                        <button type="button" onClick = {handleLikeClick} className={cardLikeButtonClassName}></button>
+                        <button type="button" onClick={handleLikeClick} className={cardLikeButtonClassName}></button>
                         <span className="card__like-info">{props.card.likes.length}</span>
                     </div>
                 </div>
