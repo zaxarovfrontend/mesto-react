@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from "./Card";
 import pencilImage from '../images/Karandashimage.svg'
-import {CurrentUserContext} from "../contexts/currentUserContext";
+import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
 
 function Main(props) {

@@ -5,18 +5,18 @@ import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
 import ImagePopup from './ImagePopup';
-import PopUpEditProfile from "./PopUpEditProfile";
+import EditProfilePopup from "./EditProfilePopup";
 import AddPlacePopup from "./AddPlacePopup";
-import ProfileAvatar from "./ProfileAvatar";
+import EditAvatarPopup from "./EditAvatarPopup";
 
-import {CurrentUserContext} from "../contexts/currentUserContext";
+import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
 function App() {
     const [currentUser, setCurrentUser] = React.useState({});
     const [cards, setCards] = React.useState([])
     const [selectedCard, setSelectedCard] = React.useState(null);
-    const [isPopUpEditProfileOpen, setIsPopUpEditProfileOpen] = React.useState(false);
-    const [isProfileAvatarPopupOpen, setIsProfileAvatarPopupOpen] = React.useState(false);
+    const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
+    const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
     const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
 
 
@@ -46,11 +46,11 @@ function App() {
     }
 
     function handleEditProfileClick() {
-        setIsPopUpEditProfileOpen(true);
+        setIsEditProfilePopupOpen(true);
     }
 
     function handleEditAvatarClick() {
-        setIsProfileAvatarPopupOpen(true);
+        setIsEditAvatarPopupOpen(true);
     }
 
     function handleAddPlaceClick() {
@@ -59,9 +59,9 @@ function App() {
 
     function closeAllPopups() {
         setSelectedCard(null)
-        setIsPopUpEditProfileOpen(false)
+        setIsEditProfilePopupOpen(false)
         setIsAddPlacePopupOpen(false)
-        setIsProfileAvatarPopupOpen(false)
+        setIsEditAvatarPopupOpen(false)
     }
 
     function handleCardLike(card) {
@@ -136,10 +136,10 @@ function App() {
                 />
                 <Footer/>
                 <ImagePopup card={selectedCard !== null && selectedCard} onClose={closeAllPopups}/>
-                <PopUpEditProfile isOpen={isPopUpEditProfileOpen} onClose={closeAllPopups}
+                <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups}
                                   onUpdateUser={handleUpdateUser}/>
-                <ProfileAvatar isOpen={isProfileAvatarPopupOpen} onClose={closeAllPopups}
-                               onUpdateAvatar={handleUpdateAvatar}/>
+                <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}
+                                 onUpdateAvatar={handleUpdateAvatar}/>
                 <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace={handleAddPlaceSubmit}/>
             </div>
         </CurrentUserContext.Provider>

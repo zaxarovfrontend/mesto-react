@@ -2,7 +2,7 @@ import React from 'react';
 import PopupWithForm from './PopupWithForm';
 
 
-function ProfileAvatar(props) {
+function EditAvatarPopup(props) {
     const avatarRef = React.useRef('')
 
     function handleSubmit(e) {
@@ -32,4 +32,4 @@ function ProfileAvatar(props) {
     )
 }
 
-export default ProfileAvatar;
+export default EditAvatarPopup;
