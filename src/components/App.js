@@ -6,8 +6,9 @@ import Main from './Main';
 import Footer from './Footer';
 import ImagePopup from './ImagePopup';
 import PopUpEditProfile from "./PopUpEditProfile";
-import PopUpAddCard from "./PopUpAddCard";
+import AddPlacePopup from "./AddPlacePopup";
 import ProfileAvatar from "./ProfileAvatar";
+
 import {CurrentUserContext} from "../contexts/currentUserContext";
 
 function App() {
@@ -16,7 +17,8 @@ function App() {
     const [selectedCard, setSelectedCard] = React.useState(null);
     const [isPopUpEditProfileOpen, setIsPopUpEditProfileOpen] = React.useState(false);
     const [isProfileAvatarPopupOpen, setIsProfileAvatarPopupOpen] = React.useState(false);
-    const [isPopUpAddCardOpen, setIsPopUpAddCardPopupOpen] = React.useState(false);
+    const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
+
 
     //запрос данных пользователя
     React.useEffect(() => {
@@ -54,13 +56,13 @@ function App() {
     }
 
     function handleAddPlaceClick() {
-        setIsPopUpAddCardPopupOpen(true);
+        setIsAddPlacePopupOpen(true);
     }
 
     function closeAllPopups() {
         setSelectedCard(null)
         setIsPopUpEditProfileOpen(false)
-        setIsPopUpAddCardPopupOpen(false)
+        setIsAddPlacePopupOpen(false)
         setIsProfileAvatarPopupOpen(false)
     }
 
@@ -110,6 +112,16 @@ function App() {
             })
     }
 
+    function handleAddPlaceSubmit(data) {
+        api.addCard(data)
+            .then((newCard) => {
+                setCards([newCard, ...cards]);
+                closeAllPopups()
+            })
+            .catch((err)=>{
+                console.log(err)
+            })
+    }
 
     return (
         <CurrentUserContext.Provider value={currentUser}>
@@ -127,8 +139,8 @@ function App() {
             <Footer/>
             <ImagePopup card={selectedCard !== null && selectedCard} onClose={closeAllPopups}/>
             <PopUpEditProfile isOpen={isPopUpEditProfileOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser}/>
-            <PopUpAddCard isOpen={isPopUpAddCardOpen} onClose={closeAllPopups}/>
             <ProfileAvatar isOpen={isProfileAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar}/>
+            <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace = {handleAddPlaceSubmit}/>
         </div>
         </CurrentUserContext.Provider>
     )
